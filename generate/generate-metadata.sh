@@ -11,6 +11,7 @@ mkdir -p "$sources/dev/idps"
 mkdir -p "$sources/compliance-tool/idps"
 rm -f "$output/*"
 
+if false; then
 # generate
 bundle >/dev/null
 
@@ -64,6 +65,7 @@ for src in dev compliance-tool; do
 
   cp metadata/output/$src/metadata.signed.xml metadata/$src.xml
 done
+fi
 
 echo "$(tput setaf 3)Generating compatible federation config$(tput sgr0)"
 $script_dir/fed-config.rb \
