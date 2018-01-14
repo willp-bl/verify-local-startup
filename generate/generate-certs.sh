@@ -78,19 +78,16 @@ pushd $DEV_KEYS_DIR >/dev/null
   createLeaf ocsp_responder                     dev-rp-ca        ocsp          'Dev RP OCSP Responder'
 
   # Generate OCSP responses
-# does not work wih cfssl in docker image
-# -> [CRITICAL] Unable to sign OCSP response: {"code":8100,"message":"Certificate not issued by this issuer"}
-
-#  for cert in sample_rp{,_msa}_{encryption,signing}_{primary,secondary}.pem; do
-#    echo -n "$(tput setaf 3)Generating OCSP response for $cert $(tput sgr0) ... "
-#    cfssl ocspsign \
-#      -ca $CA_CERTS_DIR/dev-rp-ca.pem.test \
-#      -responder ocsp_responder.pem \
-#      -responder-key ocsp_responder-key.pem \
-#      -cert $cert \
-#      | cfssljson -bare -stdout >> ocsp_responses
-#    test 0 -eq $? && echo "$(tput setaf 2)DONE$(tput sgr0)" || echo "$(tput setaf 1)FAILED$(tput sgr0)"
-#  done
+  for cert in sample_rp{,_msa}_{encryption,signing}_{primary,secondary}.pem; do
+    echo -n "$(tput setaf 3)Generating OCSP response for $cert $(tput sgr0) ... "
+    cfssl ocspsign \
+      -ca $CA_CERTS_DIR/dev-rp-ca.pem.test \
+      -responder ocsp_responder.pem \
+      -responder-key ocsp_responder-key.pem \
+      -cert $cert \
+      | cfssljson -bare -stdout >> ocsp_responses
+    test 0 -eq $? && echo "$(tput setaf 2)DONE$(tput sgr0)" || echo "$(tput setaf 1)FAILED$(tput sgr0)"
+  done
 
   # Convert all the keys to .pk8 files
   for file in *-key.pem
