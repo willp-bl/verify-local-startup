@@ -50,6 +50,12 @@ matching_services = {
 
 countries = {
   'stub-country' => { },
+  # ensure that stub-idp in kubernetes is running locally before this script runs otherwise the metadata won't be cached
+  # correctly by ./generate-eidas-metadata.rb in `verify-build`; see https://github.com/willp-bl/verify-kubernetes
+  # there is a race condition as verify-kubernetes needs the pki generated during verify-local-startup for it to be
+  # configured correctly so you might have to edit the countries/stub-country.yml file manually and re-run
+  # ./generate-eidas-metadata.sh once everything is running using verify-build
+  # 'stub-country' => { 'entityId' => "http://192.168.99.100:50140/stub-country/ServiceMetadata", },
   'stub-cef-reference' => { 'simpleId' => 'ZZ' },
   # these are disabled because they won't work (they aren't displayed by the frontend)
   'netherlands' => { 'simpleId' => 'NL', 'enabled' => 'false' },
