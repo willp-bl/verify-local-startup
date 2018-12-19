@@ -31,6 +31,7 @@ rps = {
   },
   'vsp.dev-rp' => {
     'simpleId' => 'test-rp',
+    'matchingServiceEntityId' => 'http://localhost:3300/matching-service/SAML2/metadata',
     'matchingProcess' => { 'cycle3AttributeName' => 'NationalInsuranceNumber' },
     'assertionConsumerServices' => [
       { 'uri' => "http://localhost:3200/verify/response", 'index' => 0, 'isDefault' => true }
@@ -44,7 +45,9 @@ matching_services = {
     'userAccountCreationUri' => "http://localhost:#{ENV.fetch('TEST_RP_MSA_PORT')}/unknown-user-attribute-query"
   },
   'vsp.dev-rp-ms' => {
-    'uri' => "http://localhost:#{ENV.fetch('VSP_MSA_PORT')}/matching-service/POST"
+    'entityId' => "http://localhost:3300/matching-service/SAML2/metadata",
+    'uri' => "http://localhost:3300/matching-service/SAML2/metadata",
+    'readMetadataFromEntityId' => "true"
   }
 }
 

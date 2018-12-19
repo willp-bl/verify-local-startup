@@ -16,8 +16,10 @@ logging:
       logFormat: '%-5p [%d{ISO8601,UTC}] %c: %X{logPrefix}%m%n%xEx'
 
 matchingServiceAdapter:
-  entityId: http://vsp.dev-rp-ms.local/SAML2/MD
+  entityId: http://localhost:3300/matching-service/SAML2/metadata
   externalUrl: http://localhost:${VSP_MSA_PORT}/matching-service/POST
+
+signMetadataEnabled: true
 
 localMatchingService:
   matchUrl: http://localhost:${ELMS_PORT}/match-user
