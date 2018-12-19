@@ -24,7 +24,8 @@ idps = {
   'Stub IDP One' => 'stub-idp-one',
   'Stub IDP Two' => 'stub-idp-two',
   'Stub IDP Three' => 'stub-idp-three',
-  'Stub IDP Four' => 'stub-idp-four'
+  'Stub IDP Four' => 'stub-idp-four',
+  'Headless IDP' => 'headless-idp'
 }
 
 hub_yaml = {
@@ -52,7 +53,7 @@ Dir::chdir(output_dir) do
     yaml = idp_yaml.update(
       'organization' => { 'name' => id, 'url' => "http://#{id}.local", 'display_name' => name},
       'entity_id' => "http://#{id}.local/SSO/POST",
-      'sso_uri' => "#{ENV.fetch('STUB_IDP_URI')}/#{id}/SAML2/SSO",
+      'sso_uri' => id.eql? 'headless-idp' ? "#{ENV.fetch('STUB_IDP_URI')}/headless" : "#{ENV.fetch('STUB_IDP_URI')}/#{id}/SAML2/SSO",
       'id' => id
     )
     File.open(File.join('idps', "#{id}.yml"), 'w') { |f| f.write(YAML.dump(yaml)) }

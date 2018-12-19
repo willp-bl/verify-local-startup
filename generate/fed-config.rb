@@ -18,6 +18,7 @@ msa_encryption_cert = ARGV[3]
 output_dir = ARGV[4]
 
 idps = {
+  'headless-idp' => {},
   'stub-idp-one' => { 'enabled' => false },
   'stub-idp-two' => { 'useExactComparisonType' => false },
   'stub-idp-three' => {},
