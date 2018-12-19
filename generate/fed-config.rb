@@ -46,7 +46,7 @@ matching_services = {
   },
   'vsp.dev-rp-ms' => {
     'entityId' => "http://localhost:3300/matching-service/SAML2/metadata",
-    'uri' => "http://localhost:3300/matching-service/SAML2/metadata",
+    'uri' => "http://localhost:3300/matching-service/POST",
     'readMetadataFromEntityId' => "true"
   }
 }
