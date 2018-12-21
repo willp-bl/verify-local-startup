@@ -31,6 +31,8 @@ rps = {
     'matchingProcess' => { 'cycle3AttributeName' => 'NationalInsuranceNumber' },
   },
   'vsp.dev-rp' => {
+    'entityId' => "http://localhost:50400/metadata",
+    'metadataEnabled' => 'true',
     'simpleId' => 'test-rp',
     'matchingServiceEntityId' => 'http://localhost:3300/matching-service/SAML2/metadata',
     'matchingProcess' => { 'cycle3AttributeName' => 'NationalInsuranceNumber' },

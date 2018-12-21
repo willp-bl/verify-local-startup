@@ -34,11 +34,15 @@ MSA = <<~MSA
 VSP = <<~VSP
     ### VSP
     MSA_METADATA_URL=http://localhost:#{ENV['TEST_RP_MSA_PORT']}/matching-service/SAML2/metadata
-    MSA_ENTITY_ID=http://dev-rp-ms.local/SAML2/MD
-    SERVICE_ENTITY_IDS='["http://vsp.dev-rp.local/SAML2/MD"]'
+    MSA_ENTITY_ID=http://localhost:3300/matching-service/SAML2/metadata
+    SERVICE_ENTITY_IDS='["http://localhost:50400/metadata"]'
     VERIFY_ENVIRONMENT=COMPLIANCE_TOOL
     SAML_SIGNING_KEY=#{`base64 data/pki/sample_rp_signing_primary.pk8`}
+    SAML_PRIMARY_SIGNING_CERT=#{`base64 data/pki/sample_rp_signing_primary.crt`}
     SAML_PRIMARY_ENCRYPTION_KEY=#{`base64 data/pki/sample_rp_encryption_primary.pk8`}
+    SAML_PRIMARY_ENCRYPTION_CERT=#{`base64 data/pki/sample_rp_encryption_primary.crt`}
+    RP_TRUSTSTORE_ENCODED=#{`base64 data/pki/relying_parties.ts`}
+    RP_TRUSTSTORE_PASSWORD=marshmallow
 
   VSP
 
