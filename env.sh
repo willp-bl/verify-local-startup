@@ -23,4 +23,6 @@ TEST_RP_MSA_ENCRYPTION_KEY=$($BASE64 data/pki/sample_rp_msa_encryption_primary.p
 TEST_RP_MSA_ENCRYPTION_CERT=$($BASE64 data/pki/sample_rp_msa_encryption_primary.crt)
 HUB_TRUSTSTORE=$($BASE64 data/pki/hub.ts)
 HUB_TRUSTSTORE_PASSWORD=marshmallow
+RP_TRUSTSTORE_ENCODED=$($BASE64 data/pki/relying_parties.ts)
+RP_TRUSTSTORE_PASSWORD=marshmallow
 EOF
