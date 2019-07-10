@@ -24,7 +24,7 @@ localMatchingService:
   accountCreationUrl: http://localhost:${TEST_RP_PORT}/test-rp/unknown-user/POST
 
 hub:
-  ssoUrl: ${HUB_SSO_URL:-http://localhost:50300/SAML2/SSO}
+  ssoUrl: http://${EXTERNAL_HOST}:50300/SAML2/SSO
   republishHubCertificatesInLocalMetadata: true
   hubEntityId: https://dev-hub.local
 

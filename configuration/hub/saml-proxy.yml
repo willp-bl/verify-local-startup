@@ -16,7 +16,7 @@ logging:
 
 saml:
   entityId: https://dev-hub.local
-  expectedDestination: http://localhost:50300
+  expectedDestination: http://${EXTERNAL_HOST}:50300
 
 httpClient:
   timeout: 2s
@@ -30,7 +30,7 @@ httpClient:
 
 enableRetryTimeOutConnections: true
 
-frontendExternalUri: http://localhost:50300
+frontendExternalUri: http://${EXTERNAL_HOST}:50300
 
 configUri: http://localhost:${CONFIG_PORT}
 

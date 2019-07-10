@@ -14,7 +14,7 @@ logging:
   appenders:
     - type: console
 
-host: http://localhost:${STUB_IDP_PORT}
+host: http://${EXTERNAL_HOST}:${STUB_IDP_PORT}
 
 assertionLifetime: 60m
 
@@ -69,7 +69,7 @@ europeanIdentity:
   enabled: true
   hubConnectorEntityId: http://localhost:55500/dev-connector.xml
   # do not add an ending slash to stubCountryBaseUrl
-  stubCountryBaseUrl: http://localhost:50140
+  stubCountryBaseUrl: http://${EXTERNAL_HOST}:${STUB_IDP_PORT}
   metadata:
     jerseyClientName: stub-idp-connector-metadata-client
     client:

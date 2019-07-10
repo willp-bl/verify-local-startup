@@ -14,14 +14,14 @@ logging:
   appenders:
     - type: console
 
-transactionHost: http://localhost:${TEST_RP_PORT}
+transactionHost: http://${EXTERNAL_HOST}:${TEST_RP_PORT}
 dontCacheFreemarkerTemplates: true
 
 cookieName: test-rp-session
 
 saml:
   entityId: http://test-rp.dev-rp.local/SAML2/MD
-  expectedDestination: http://localhost
+  expectedDestination: http://${EXTERNAL_HOST}:${TEST_RP_PORT}
 
 httpClient:
   timeout: 2s

@@ -17,7 +17,7 @@ logging:
 
 saml:
   entityId: https://dev-hub.local
-  expectedDestination: http://localhost
+  expectedDestination: http://${EXTERNAL_HOST}:50300
 
 httpClient:
   timeout: 2s
@@ -105,7 +105,7 @@ eidas: true
 country:
   saml:
     entityId: http://localhost:55500/dev-connector.xml
-    expectedDestination: http://localhost:50300/SAML2/SSO/EidasResponse/POST
+    expectedDestination: http://${EXTERNAL_HOST}:50300/SAML2/SSO/EidasResponse/POST
   metadata:
     trustAnchorUri: http://localhost:55500/trust-anchor
     metadataSourceUri: http://localhost:55500/aggregator

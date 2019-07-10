@@ -37,7 +37,7 @@ rps = {
     'matchingServiceEntityId' => 'http://localhost:3300/matching-service/SAML2/metadata',
     'matchingProcess' => { 'cycle3AttributeName' => 'NationalInsuranceNumber' },
     'assertionConsumerServices' => [
-      { 'uri' => "http://localhost:3200/verify/response", 'index' => 0, 'isDefault' => true }
+      { 'uri' => "http://#{ENV.fetch('EXTERNAL_HOST')}:3200/verify/response", 'index' => 0, 'isDefault' => true }
     ]
   },
 }
@@ -113,7 +113,7 @@ Dir::chdir(output_dir) do
           'entityId' => "http://#{rp}.local/SAML2/MD",
           'simpleId' => rp,
           'assertionConsumerServices' => [
-            { 'uri' => "#{ENV.fetch('TEST_RP_URI')}/test-rp/login", 'index' => 0, 'isDefault' => true }
+            { 'uri' => "http://#{ENV.fetch('EXTERNAL_HOST')}:50130/test-rp/login", 'index' => 0, 'isDefault' => true }
           ],
           'levelsOfAssurance' => [ 'LEVEL_2' ],
           'matchingServiceEntityId' => "http://#{rp}-ms.local/SAML2/MD",
@@ -149,7 +149,7 @@ Dir::chdir(output_dir) do
     countries.each do |country, overrides|
       File.open("#{country}.yml", 'w') do |f|
         f.write(YAML.dump({
-          'entityId' => "http://localhost:50140/#{country}/ServiceMetadata",
+          'entityId' => "http://#{ENV.fetch('EXTERNAL_HOST')}:50140/#{country}/ServiceMetadata",
           'simpleId' => 'YY',
           'enabled' => true
         }.update(overrides)))

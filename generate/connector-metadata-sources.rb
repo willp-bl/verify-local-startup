@@ -22,7 +22,7 @@ output_dir = ARGV[2]
 hub_yaml = {
   'id' => 'VERIFY-HUB',
   'entity_id' => 'http://localhost:55500/dev-connector.xml',
-  'assertion_consumer_service_uri' => "#{ENV.fetch('FRONTEND_URI')}/SAML2/SSO/EidasResponse/POST",
+  'assertion_consumer_service_uri' => "http://#{ENV.fetch('EXTERNAL_HOST')}:50300/SAML2/SSO/EidasResponse/POST",
   'organization' => { 'name' => 'Hub', 'url' => 'http://localhost', 'display_name' => 'Hub' },
   'signing_certificates' => [
     { 'name' => 'signing_primary', 'x509' => block_cert(hub_signing_cert) }
